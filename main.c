@@ -18,8 +18,6 @@ int main(){
         printf("ERRO\n");
         return 1;
     }
-
-
     while(!feof(Arquivo)){
         WordMa = fgets(latter, 50, Arquivo);
         if(WordMa != NULL){
@@ -35,7 +33,6 @@ int main(){
     printf("\n---> 3  SAIR ");
     printf("\n-----------------------------------------\n\n");
     scanf("%d", &op);
-
 
     switch(op){
         case 1:
@@ -64,9 +61,6 @@ int main(){
 
         default:
             op = 0;
-
-
-
     }
 }
 return EXIT_SUCCESS;
