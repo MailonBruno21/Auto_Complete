@@ -42,9 +42,7 @@ int add (WordList *list, char *Word);//ADICIONA AS PALAVRAS
 void seek (Node *aux, char *Word);//FUNÇÃO AUXILIAR QUE IMPRIME AS PALAVRAS
 int show(WordList *list, char *Word);//FUNÇÃO QUE GERENCIA A IMPRESSÃO DAS PALAVRAS
 bool isEmpty(noList *lista);//VERIFICA SE A LISTA ESTÁ VAZIA
-
 //------------------------------------------------------------------------------------//
-
 void init(WordList *list){
     //CRIANDO INDICES DE A ATÉ Z DO TIPO NODE
     for(int aux = 0; aux <= 25 ; aux++){
@@ -58,17 +56,13 @@ void init(WordList *list){
 }
 
 int add (WordList *list, char *Word){
-
     Node *aux;  //USADO PARA AUXILIAR AS OPERAÇÕES
     int tamanho = strlen(Word); //RECEBE A QUATIDADE DE LETRAS QUE CONTÉM A PALAVRA A SER ADICIONADA
-
-    //INICIO - VERIFICA QUAL O INDICE DA PALAVRA
+    //VERIFICA QUAL O INDICE DA PALAVRA
     for(int j = 0; j <= 25; j++){
         if(list->first[j]->data[0] == Word[0] ){
             aux = list->first[j];
-    //FIM
-            for(int i = 0; i <= tamanho; i++){                          //FAZ A CONTAGEM DA QUANTIDADE DE CHAR QUE SERÁ ADD
-
+            for(int i = 0; i <= tamanho; i++){                         //FAZ A CONTAGEM DA QUANTIDADE DE CHAR QUE SERÁ ADD
                 if(aux == list->first[j] && aux->nextChar == NULL){    //VERIFICA SE O INDICE NÃO APONTA PARA ALGUMA LETRA
                     int q = i;
                     while(Word[q] != '\0'){
@@ -84,7 +78,6 @@ int add (WordList *list, char *Word){
                         Nulo->data[0] = '\0';
                         Nulo->downWord = NULL;
                         Nulo->nextChar = NULL;
-
                         aux->nextChar = Nulo;
                         list->size[j]++;
                         return 0;
@@ -100,7 +93,6 @@ int add (WordList *list, char *Word){
                             NewNode->data[0] = Word[q];
                             NewNode->downWord = NewNode;
                             NewNode->nextChar = NULL;
-
                             aux = NewNode;
                             q++;
                         }
@@ -108,7 +100,6 @@ int add (WordList *list, char *Word){
                         Nulo->data[0] = '\0';
                         Nulo->downWord = NULL;
                         Nulo->nextChar = NULL;
-
                         aux->nextChar = Nulo;
                         list->size[j]++;
                         return 0;
@@ -175,7 +166,6 @@ int add (WordList *list, char *Word){
 }
 
 int show(WordList *list, char *Word){
-
     char palavra[50] = "";          //ONDE SERÁ CONCATENADO AS PALAVRAS
     int tamanho = strlen(Word), i;  // TAMANHO RECEBE A QUATIDADE DE CARACTERS DA PALAVRA E I É UMA VARIAVEL DE CONTROLE
     Node *aux;                      //NODE AUXILIAR PARA AS OPERAÇÕES
@@ -212,13 +202,9 @@ int show(WordList *list, char *Word){
 }
 
 void seek(Node *aux, char *Word){
-
     noList listNo; //CRIA A LISTA QUE VAI ARMAZENAR OS VALORES DOS DOWNWORD
-
     initNo(&listNo); //INICIA A LISTA
-
     while(aux->nextChar != NULL){ //WHILE RODA ATE O ULTIMO CARACTER DA LINHA
-
         if(aux->nextChar->data[0] == '\0'){//VERIFICA SE TERMINHA UMA PALAVRA PARA PODER IMPRIMIR
             printf("%s", Word);
         }
@@ -256,27 +242,20 @@ void downList(noList *lista){ //
 }
 
 int enqueue(noList *lista, Node *aux, char *Word){
-    No *NodeNo = (No*)malloc(sizeof(No));
-
-    NodeNo->nextNo = NULL;
-    NodeNo->no = aux;
-    strcpy(NodeNo->WordNo, Word);
-
+    No *NodeNo = (No*)malloc(sizeof(No)); //NO DA LISTA DE DOWNWORD
+    NodeNo->nextNo = NULL; //SETANDO O PROXIMO COMO NULO
+    NodeNo->no = aux; //NO RECEBE O VALOR DE DOWNEORD
+    strcpy(NodeNo->WordNo, Word); //ARMAZENA O QUE JA TINHA SIDO CONCATENADO ATE AQUELE PONTO
     if(lista->sizeNo == 0){
-        lista->firstNo = NodeNo;
-    }else{
+        lista->firstNo = NodeNo; //SE FOR O PRIMEIRO NÓ O FIRST RECEBE O NÓ
+    }else{//ADICIONA NO NÓ NA ULTIMA POSIÇÃO DA LISTA
         No *aux2 = lista->firstNo;
         while(aux2->nextNo != NULL){
             aux2 = aux2->nextNo;
         }
-
         aux2->nextNo = NodeNo;
-
     }
-    lista->sizeNo++;
+    lista->sizeNo++; //INCREMENTA A QUATIDADE DE NÓS DA LISTA
     return -1;
-
 }
-
 #endif // Structure_Auto_Complete_h
-
