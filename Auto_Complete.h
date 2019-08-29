@@ -181,15 +181,10 @@ int show(WordList *list, char *Word){
                     i--;
                 }
             }
-            if(Word[tamanho] != aux->nextChar->data[0] && i != 1){
-                printf("PALAVRA NAO ENCONTRADA\n");
-                return 0;
-            }else{
-                seek(aux, palavra);
-            }
+
+            seek(aux, palavra);
         }
     }
-    system("pause");
     return 0;
 }
 
