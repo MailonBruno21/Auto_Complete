@@ -3,30 +3,32 @@
 #include <stdio.h>
 #include <string.h>
 
-
+//DEFININDO VALORES PARA TRUE END FALSE
 enum boolean{
     true = 1, false = 0
 };
 
 typedef enum boolean bool;
 
+//ESTRUTURA DE ARMAZENAMENTO DE CADA LETRA
 typedef struct Node{
     char data[2];
     struct Node *nextChar;
     struct Node *downWord;
 }Node;
 
+//ESTRUTURA PARA ARMAZENAR OS ELEMENTOS PARA IMPRESSÃO
 typedef struct No{
     struct Node *no;
     struct No *nextNo;
     char WordNo[50];
 }No;
-
+//ESTRUTURA DO PRIMEIRO NÓ DA LISTA DE IMPRESSÃO
 typedef struct noList{
     No *firstNo;
     int sizeNo;
 }noList;
-
+//ESTRUTURA DO PRIMEIRO NÓ DA LISTA DE ARMAZENAMENTO DAS LETRAS
 typedef struct WordList{
     Node *first[25];
     int size[25];
